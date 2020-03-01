@@ -1,8 +1,12 @@
 #include "Transaction.h"
 
-/***************************** data types *****************************/
+/***************************************************************************************************** 
+					data types
+******************************************************************************************************/
 
-extern en_transStat; // global variable used as a flag to change the state of transaction
+/* global variable used as a flag to change the state of transaction*/
+
+extern en_transStat; 
 
 static ST_accountBalance st_accountBalance [] = {{"123456789","0100.00"},
                                                  {"234567891","6000.00"},
@@ -16,21 +20,24 @@ static ST_accountBalance st_accountBalance [] = {{"123456789","0100.00"},
                                                  {"456789321","0000.55"},
                                                 };
 
-
-typedef enum EN_SearchStat  //used in searching  of the account number
+/*used in searching  of the account number*/
+typedef enum EN_SearchStat  
 {
 	NOTFOUND,
 	FOUND
 }EN_SearchStat;
 
-
-static char Founded_Account_Indexed; //used to access the balance of the founded account
+/* used to access the balance of the founded account*/
+static char Founded_Account_Indexed;
 
 
 static char receiptReferenceNumber=0;
 
-//extern ptrSt_transaction;
-/*******************************************************************************************************/
+
+
+/***************************************************************************************************** 
+					Static Function implementation
+******************************************************************************************************/
 
 
 
@@ -72,6 +79,9 @@ static float ConvAmountToInt(char *ptr ){
     return total_number ;
 }
 
+/***************************************************************************************************** 
+					Extern Function implementation
+******************************************************************************************************/
 
 /*****************receives the data of the card **********************/
 
@@ -153,7 +163,7 @@ void fillTerminalData(ST_transaction *transaction){
 
 /***************** check the balance and save the transaction into server **********************/
 
-//this function searches if the account is in the table of the server or not
+/*this function searches if the account is in the table of the server or not*/
 
 static EN_SearchStat search_account(ST_transaction *transaction){
         int counter1,counter2;
